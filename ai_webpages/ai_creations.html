@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Creations - Projects</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #3a86ff;
+            --secondary-color: #8338ec;
+            --accent-color: #ff006e;
+            --background-color: #f8f9fa;
+            --text-color: #212529;
+            --card-bg-color: white;
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color var(--transition-speed) ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Header and Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width var(--transition-speed) ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: all var(--transition-speed) ease;
+            background-color: var(--text-color);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 5%;
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #6c757d;
+        }
+
+        /* Project Categories */
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .category-tab {
+            padding: 0.5rem 1.5rem;
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .category-tab.active, .category-tab:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .project-card {
+            background-color: var(--card-bg-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-image {
+            height: 180px;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #adb5bd;
+            font-size: 1.2rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-category {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background-color: rgba(58, 134, 255, 0.1);
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 0.8rem;
+        }
+
+        .project-card p {
+            margin-bottom: 1.2rem;
+            color: #6c757d;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            font-weight: 500;
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .project-link:hover {
+            transform: translateX(5px);
+        }
+
+        /* Featured Project */
+        .featured-project {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        .featured-project-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .featured-project-image {
+            height: 100%;
+            min-height: 300px;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #adb5bd;
+            font-size: 1.2rem;
+        }
+
+        .featured-project-text {
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background-color: rgba(255, 0, 110, 0.1);
+            color: var(--accent-color);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .featured-project h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .featured-project p {
+            margin-bottom: 1.5rem;
+            color: #6c757d;
+        }
+
+        /* Subscribe Section */
+        .subscribe-section {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .subscribe-section h2 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .subscribe-section p {
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            color: #6c757d;
+        }
+
+        .subscribe-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .subscribe-form input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ced4da;
+            border-radius: 5px 0 0 5px;
+            font-size: 1rem;
+        }
+
+        .subscribe-form button {
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color var(--transition-speed) ease;
+        }
+
+        .subscribe-form button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 3rem;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                padding: 2rem 0;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .featured-project-content {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-project-image {
+                min-height: 200px;
+            }
+
+            .subscribe-form {
+                flex-direction: column;
+            }
+
+            .subscribe-form input {
+                border-radius: 5px;
+                margin-bottom: 1rem;
+            }
+
+            .subscribe-form button {
+                border-radius: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">AI Creations</div>
+        <nav id="main-nav">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#" class="active">AI Creations</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h1>AI Projects Collection</h1>
+            <p>Explore a diverse range of artificial intelligence projects showcasing the creative and practical applications of machine learning, natural language processing, computer vision, and more.</p>
+        </section>
+
+        <section class="featured-project">
+            <div class="featured-project-content">
+                <div class="featured-project-image">Featured Project Visualization</div>
+                <div class="featured-project-text">
+                    <span class="featured-badge">FEATURED PROJECT</span>
+                    <h2>Neural Art Generation</h2>
+                    <p>This groundbreaking project combines style transfer techniques with generative adversarial networks to create stunning artwork based on any text description. The system analyzes the semantic content of text prompts and generates corresponding visual representations that match both style and content requirements.</p>
+                    <a href="#" class="project-link">View Project Details →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="category-tabs" id="category-tabs">
+            <div class="category-tab active" data-category="all">All Projects</div>
+            <div class="category-tab" data-category="vision">Computer Vision</div>
+            <div class="category-tab" data-category="nlp">Natural Language</div>
+            <div class="category-tab" data-category="generative">Generative AI</div>
+            <div class="category-tab" data-category="robotics">Robotics</div>
+        </section>
+
+        <section class="projects-grid" id="projects-grid">
+            <!-- Computer Vision Projects -->
+            <div class="project-card" data-category="vision">
+                <div class="project-image">Image Recognition Demo</div>
+                <div class="project-content">
+                    <span class="project-category">Computer Vision</span>
+                    <h3>Real-time Object Detection</h3>
+                    <p>A machine learning system that can identify and track objects in video streams with high accuracy using a custom-trained convolutional neural network.</p>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="vision">
+                <div class="project-image">Facial Analysis Demo</div>
+                <div class="project-content">
+                    <span class="project-category">Computer Vision</span>
+                    <h3>Emotion Recognition</h3>
+                    <p>An AI that analyzes facial expressions in images and video to accurately detect and classify human emotions in real-time.</p>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+            </div>
+
+            <!-- NLP Projects -->
+            <div class="project-card" data-category="nlp">
+                <div class="project-image">Text Analysis Demo</div>
+                <div class="project-content">
+                    <span class="project-category">Natural Language</span>
+                    <h3>Sentiment Analysis Engine</h3>
+                    <p>A sophisticated language model that can determine the emotional tone behind text data, helping businesses understand customer feedback.</p>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="nlp">
+                <div class="project-image">Language Translation Demo</div>
+                <div class="project-content">
+                    <span class="project-category">Natural Language</span>
+                    <h3>Neural Machine Translation</h3>
+                    <p>An advanced translation system that accurately converts text between multiple languages while preserving context and meaning.</p>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+            </div>
+
+            <!-- Generative AI Projects -->
+            <div class="project-card" data-category="generative">
+                <div class="project-image">Music Generation Demo</div>
+                <div class="project-content">
+                    <span class="project-category">Generative AI</span>
+                    <h3>AI Music Composer</h3>
+                    <p>A deep learning system that generates original musical compositions in various styles and genres based on minimal input parameters.</p>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="generative">
+                <div class="project-image">Text Generation Demo</div>
+                <div class="project-content">
+                    <span class="project-category">Generative AI</span>
+                    <h3>Story Generator</h3>
+                    <p>An advanced language model that creates compelling original short stories, poetry, and scripts based on simple prompts.</p>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+            </div>
+
+            <!-- Robotics Projects -->
+            <div class="project-card" data-category="robotics">
+                <div class="project-image">Robotics Demo</div>
+                <div class="project-content">
+                    <span class="project-category">Robotics</span>
+                    <h3>Autonomous Navigation</h3>
+                    <p>A reinforcement learning system that enables robots to navigate complex environments without human intervention.</p>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="robotics">
+                <div class="project-image">Robot Arm Demo</div>
+                <div class="project-content">
+                    <span class="project-category">Robotics</span>
+                    <h3>Precision Object Manipulation</h3>
+                    <p>An AI-powered robotic arm system that can identify, pick up, and precisely manipulate objects of various shapes and sizes.</p>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="subscribe-section">
+            <h2>Stay Updated on AI Innovations</h2>
+            <p>Subscribe to our newsletter to receive the latest updates on our AI projects, research findings, and upcoming demonstrations.</p>
+            <form class="subscribe-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 AI Creations. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const hamburger = document.getElementById('hamburger-menu');
+            const navLinks = document.querySelector('.nav-links');
+
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // Category filtering
+            const categoryTabs = document.querySelectorAll('.category-tab');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            categoryTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs
+                    categoryTabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    const category = tab.getAttribute('data-category');
+                    
+                    // Show/hide projects based on category
+                    projectCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Form submission handling
+            const subscribeForm = document.querySelector('.subscribe-form');
+            
+            subscribeForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                alert(`Thank you for subscribing with ${email}! You will receive updates on our latest AI projects.`);
+                this.reset();
+            });
+
+            // Add smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
