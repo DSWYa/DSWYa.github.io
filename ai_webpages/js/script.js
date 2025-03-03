@@ -77,3 +77,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Call the function when the DOM is fully loaded
     document.addEventListener('DOMContentLoaded', addStructuredData);
 });
+const subscribeForm = document.querySelector('.subscribe-form');
+    
+subscribeForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = this.querySelector('input[type="email"]').value;
+    alert(`Thank you for subscribing with ${email}! You will receive updates on our latest AI projects.`);
+    this.reset();
+});

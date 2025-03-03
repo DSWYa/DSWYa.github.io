@@ -178,6 +178,54 @@ main {
 .project-link:hover {
     transform: translateX(5px);
 }
+.subscribe-section {
+    margin-top: 3rem;
+    background-color: white;
+    padding: 3rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.subscribe-section h2 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.subscribe-section p {
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+    color: #6c757d;
+}
+
+.subscribe-form {
+    display: flex;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.subscribe-form input {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 5px 0 0 5px;
+    font-size: 1rem;
+}
+
+.subscribe-form button {
+    padding: 0.8rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color var(--transition-speed) ease;
+}
+
+.subscribe-form button:hover {
+    background-color: var(--secondary-color);
+}
 
 /* Footer */
 footer {
