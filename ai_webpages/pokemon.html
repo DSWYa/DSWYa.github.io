@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokémon Type Weakness Checker</title>
     <link rel="stylesheet" href="css/pokemon.css">
+    <link rel="stylesheet" href="css/theme.css">
 </head>
 <body>
     <div class="container">
-        <header>
+        <header>    
+            <button onclick="goBack()" style="position: absolute; left: 20px; padding: 10px 15px; font-size: 16px; background-color: var(--accent-color); border: none; cursor: pointer; font-weight: bold; border-radius: 5px;">Back</button>
             <h1>Pokémon Type Weakness Checker</h1>
             <p>Select one or two Pokémon types to see their weaknesses</p>
         </header>
@@ -60,5 +62,7 @@
     </footer>
 
     <script src="js/pokemon.js"></script>
+    <script src="js/backbutton.js"></script>
+    <script src="js/theme.js"></script>
 </body>
 </html>
