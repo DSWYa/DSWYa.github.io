@@ -6,26 +6,51 @@ document.addEventListener('DOMContentLoaded', function() {
         'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy'
     ];
 
-    // Type effectiveness chart (attacker -> defender)
+    // Type effectiveness chart (defender weaknesses)
+    // This chart shows which types the defender is weak against
+    // For example: normal: { fighting: 2 } means Normal-type is weak to Fighting
     const typeChart = {
         normal: { fighting: 2, ghost: 0 },
-        fire: { fire: 0.5, water: 2, grass: 0.5, ice: 0.5, bug: 0.5, rock: 2, dragon: 0.5, steel: 0.5 },
-        water: { fire: 0.5, water: 0.5, grass: 2, ground: 0.5, rock: 0.5, dragon: 0.5 },
-        electric: { water: 0.5, electric: 0.5, grass: 0.5, ground: 2, flying: 0.5, dragon: 0.5 },
-        grass: { fire: 2, water: 0.5, grass: 0.5, poison: 2, ground: 0.5, flying: 2, bug: 2, rock: 0.5, dragon: 0.5, steel: 0.5 },
-        ice: { fire: 2, water: 0.5, grass: 0.5, ice: 0.5, ground: 2, flying: 2, dragon: 2, steel: 2 },
-        fighting: { normal: 0.5, ice: 0.5, poison: 0.5, flying: 2, psychic: 2, bug: 0.5, rock: 0.5, ghost: 0, dark: 0.5, steel: 0.5, fairy: 2 },
-        poison: { grass: 0.5, poison: 0.5, ground: 2, rock: 0.5, ghost: 0.5, steel: 0, fairy: 0.5 },
-        ground: { fire: 0.5, electric: 0, grass: 2, poison: 0.5, flying: 0, bug: 0.5, rock: 0.5, steel: 2 },
-        flying: { electric: 2, grass: 0.5, fighting: 0.5, bug: 0.5, rock: 2, steel: 0.5 },
-        psychic: { fighting: 0.5, poison: 0.5, psychic: 0.5, dark: 2, steel: 0.5 },
-        bug: { fire: 2, grass: 0.5, fighting: 0.5, poison: 0.5, flying: 2, psychic: 0.5, ghost: 0.5, dark: 0.5, steel: 0.5, fairy: 0.5 },
-        rock: { fire: 0.5, ice: 0.5, fighting: 2, ground: 2, flying: 0.5, bug: 0.5, steel: 2 },
-        ghost: { normal: 0, fighting: 0, poison: 0.5, bug: 0.5, ghost: 2, dark: 2, steel: 0.5 },
-        dragon: { dragon: 2, steel: 0.5, fairy: 2 },
-        dark: { fighting: 2, psychic: 0, ghost: 0.5, dark: 0.5, fairy: 2 },
-        steel: { fire: 2, water: 0.5, electric: 0.5, ice: 0.5, rock: 0.5, steel: 0.5, fairy: 0.5 },
-        fairy: { fire: 0.5, fighting: 0.5, poison: 2, dragon: 0, dark: 0.5, steel: 2 }
+        fire: { water: 2, ground: 2, rock: 2 },
+        water: { electric: 2, grass: 2 },
+        electric: { ground: 2 },
+        grass: { fire: 2, ice: 2, poison: 2, flying: 2, bug: 2 },
+        ice: { fire: 2, fighting: 2, rock: 2, steel: 2 },
+        fighting: { flying: 2, psychic: 2, fairy: 2 },
+        poison: { ground: 2, psychic: 2 },
+        ground: { water: 2, grass: 2, ice: 2, electric: 0 },
+        flying: { electric: 2, ice: 2, rock: 2, ground: 0 },
+        psychic: { bug: 2, ghost: 2, dark: 2 },
+        bug: { fire: 2, flying: 2, rock: 2 },
+        rock: { water: 2, grass: 2, fighting: 2, ground: 2, steel: 2 },
+        ghost: { ghost: 2, dark: 2, normal: 0, fighting: 0 },
+        dragon: { ice: 2, dragon: 2, fairy: 2 },
+        dark: { fighting: 2, bug: 2, fairy: 2, psychic: 0 },
+        steel: { fire: 2, fighting: 2, ground: 2, poison: 0 },
+        fairy: { poison: 2, steel: 2, dragon: 0 }
+    };
+
+    // Resistance chart (defender resistances)
+    // This chart shows which types the defender is resistant to
+    const resistanceChart = {
+        normal: {},
+        fire: { fire: 0.5, grass: 0.5, ice: 0.5, bug: 0.5, steel: 0.5, fairy: 0.5 },
+        water: { fire: 0.5, water: 0.5, ice: 0.5, steel: 0.5 },
+        electric: { electric: 0.5, flying: 0.5, steel: 0.5 },
+        grass: { water: 0.5, electric: 0.5, grass: 0.5, ground: 0.5 },
+        ice: { ice: 0.5 },
+        fighting: { bug: 0.5, rock: 0.5, dark: 0.5 },
+        poison: { grass: 0.5, fighting: 0.5, poison: 0.5, bug: 0.5, fairy: 0.5 },
+        ground: { poison: 0.5, rock: 0.5 },
+        flying: { grass: 0.5, fighting: 0.5, bug: 0.5 },
+        psychic: { fighting: 0.5, psychic: 0.5 },
+        bug: { grass: 0.5, fighting: 0.5, ground: 0.5 },
+        rock: { normal: 0.5, fire: 0.5, poison: 0.5, flying: 0.5 },
+        ghost: { poison: 0.5, bug: 0.5 },
+        dragon: { fire: 0.5, water: 0.5, electric: 0.5, grass: 0.5 },
+        dark: { ghost: 0.5, dark: 0.5 },
+        steel: { normal: 0.5, grass: 0.5, ice: 0.5, flying: 0.5, psychic: 0.5, bug: 0.5, rock: 0.5, dragon: 0.5, steel: 0.5, fairy: 0.5 },
+        fairy: { fighting: 0.5, bug: 0.5, dark: 0.5 }
     };
 
     // DOM elements
@@ -85,21 +110,28 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Calculate type effectiveness
-    function calculateWeaknesses() {
-        const effectiveness = {};
-        
-        // Initialize with neutral effectiveness for all types
+    function calculateEffectiveness() {
+        // Initialize with neutral effectiveness (1) for all types
+        let effectiveness = {};
         types.forEach(type => {
             effectiveness[type] = 1;
         });
         
-        // Apply effectiveness for each selected type
+        // Loop through each selected defending type
         selectedTypes.forEach(defenderType => {
-            types.forEach(attackerType => {
-                if (typeChart[attackerType] && typeof typeChart[attackerType][defenderType] !== 'undefined') {
-                    effectiveness[attackerType] *= typeChart[attackerType][defenderType];
-                }
-            });
+            // Apply weaknesses
+            if (typeChart[defenderType]) {
+                Object.keys(typeChart[defenderType]).forEach(attackerType => {
+                    effectiveness[attackerType] *= typeChart[defenderType][attackerType];
+                });
+            }
+            
+            // Apply resistances
+            if (resistanceChart[defenderType]) {
+                Object.keys(resistanceChart[defenderType]).forEach(attackerType => {
+                    effectiveness[attackerType] *= resistanceChart[defenderType][attackerType];
+                });
+            }
         });
         
         return effectiveness;
@@ -122,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Calculate weaknesses if types are selected
         if (selectedTypes.length > 0) {
-            const effectiveness = calculateWeaknesses();
+            const effectiveness = calculateEffectiveness();
             
             // Clear previous results
             veryWeakElement.innerHTML = '';
@@ -134,20 +166,22 @@ document.addEventListener('DOMContentLoaded', function() {
             // Group types by effectiveness
             types.forEach(type => {
                 const value = effectiveness[type];
-                const typeElement = document.createElement('div');
-                typeElement.className = `type-badge ${type}`;
-                typeElement.textContent = capitalizeFirstLetter(type);
-                
-                if (value === 4) {
-                    veryWeakElement.appendChild(typeElement);
-                } else if (value === 2) {
-                    weakElement.appendChild(typeElement);
-                } else if (value === 0.5) {
-                    resistantElement.appendChild(typeElement);
-                } else if (value === 0.25) {
-                    veryResistantElement.appendChild(typeElement);
-                } else if (value === 0) {
-                    immuneElement.appendChild(typeElement);
+                if (value === 0 || value === 0.25 || value === 0.5 || value === 2 || value === 4) {
+                    const typeElement = document.createElement('div');
+                    typeElement.className = `type-badge ${type}`;
+                    typeElement.textContent = capitalizeFirstLetter(type);
+                    
+                    if (value === 4) {
+                        veryWeakElement.appendChild(typeElement);
+                    } else if (value === 2) {
+                        weakElement.appendChild(typeElement);
+                    } else if (value === 0.5) {
+                        resistantElement.appendChild(typeElement);
+                    } else if (value === 0.25) {
+                        veryResistantElement.appendChild(typeElement);
+                    } else if (value === 0) {
+                        immuneElement.appendChild(typeElement);
+                    }
                 }
             });
             
