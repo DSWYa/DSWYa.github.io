@@ -236,6 +236,12 @@ main {
     color: #adb5bd;
     font-size: 1.2rem;
 }
+.featured-project-image img {
+    width: 100%;  /* Ensures the image fills the container */
+    height: auto; /* Maintains aspect ratio */
+    display: block;
+    border-radius: 10px; /* Optional: Adds rounded corners */
+}
 
 .featured-project-text {
     padding: 2.5rem;
