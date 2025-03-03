@@ -3,65 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Creations - Home</title>
+    <meta name="description" content="Explore AI-generated creative projects including games, simulations, stories, and code examples showcasing the artistic potential of artificial intelligence.">
+    <meta name="keywords" content="AI creations, artificial intelligence, AI projects, AI games, AI simulations, Blackjack AI, Lightspeed simulation, AI stories, AI code generation">
+    <meta name="author" content="AI Creations">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.aicreations.com/">
+    <meta property="og:title" content="AI Creations - Explore AI-Generated Creative Projects">
+    <meta property="og:description" content="Discover innovative AI projects including games, simulations, stories, and code examples showcasing artificial intelligence's creative capabilities.">
+    <meta property="og:image" content="https://www.aicreations.com/images/ai-creations-preview.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.aicreations.com/">
+    <meta property="twitter:title" content="AI Creations - Explore AI-Generated Creative Projects">
+    <meta property="twitter:description" content="Discover innovative AI projects including games, simulations, stories, and code examples showcasing artificial intelligence's creative capabilities.">
+    <meta property="twitter:image" content="https://www.aicreations.com/images/ai-creations-preview.jpg">
+    
+    <title>AI Creations - Explore AI-Generated Creative Projects</title>
     <link rel="stylesheet" href="ai_webpages/css/styles.css">
     <link rel="stylesheet" href="ai_webpages/css/theme.css">
+    <link rel="canonical" href="https://www.aicreations.com/">
 </head>
 <body>
     <header>
-        <div class="logo">AI Creations</div>
-        <nav id="main-nav">
+        <div class="logo" aria-label="AI Creations Logo">AI Creations</div>
+        <nav id="main-nav" aria-label="Main Navigation">
             <ul class="nav-links">
-                <li><a href="#" class="active">Home</a></li>
+                <li><a href="index.html" class="active" aria-current="page">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="ai_webpages/ai_creations.html">AI Creations</a></li>
+                <li><a href="blog.html">AI Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
-            <div class="hamburger" id="hamburger-menu">
+            <button class="hamburger" id="hamburger-menu" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
-            </div>
+            </button>
         </nav>
     </header>
 
     <main>
         <section class="hero">
-            <h1>Welcome to my AI Creations</h1>
-            <p>Explore the fascinating world of artificial intelligence and its creative potential.</p>
+            <h1>Welcome to AI Creations</h1>
+            <p>Explore the fascinating world of artificial intelligence and its creative potential through interactive demos, simulations, and examples.</p>
+            <a href="ai_webpages/ai_creations.html" class="cta-button">View All Projects</a>
         </section>
 
         <section class="featured-content">
             <h2>Featured AI Projects</h2>
             <div class="projects-grid">
-                <div class="project-card">
+                <article class="project-card">
                     <h3>Blackjack Game</h3>
-                    <p>This was a complete game of Blackjack made by Claude 3.5.</p>
-                    <a href="ai_webpages/Blackjack.html" class="project-link">Explore →</a>
-                </div>
-                <div class="project-card">
+                    <p>Experience a complete game of Blackjack developed by Claude 3.5. Test your strategy against an AI dealer and see if you can beat the house.</p>
+                    <a href="ai_webpages/Blackjack.html" class="project-link">Play Blackjack →</a>
+                </article>
+                <article class="project-card">
                     <h3>Lightspeed Simulation</h3>
-                    <p>A simulation on what it would look like as an observer to approach the speed of light, made with Claude 3.5.</p>
-                    <a href="ai_webpages/Lightspeed.html" class="project-link">Explore →</a>
-                </div>
-                <div class="project-card">
-                    <h3>Story Writing</h3>
-                    <p>Read short stories and poetry written by advanced language models.</p>
-                    <a href="story-writing.html" class="project-link">Explore →</a>
-                </div>
-                <div class="project-card">
-                    <h3>Code Generation</h3>
-                    <p>See examples of programming code automatically created by AI to solve various problems.</p>
-                    <a href="code-generation.html" class="project-link">Explore →</a>
-                </div>
+                    <p>Visualize the relativistic effects of approaching the speed of light in this interactive simulation created with Claude 3.5. Experience time dilation and length contraction.</p>
+                    <a href="ai_webpages/Lightspeed.html" class="project-link">Try Simulation →</a>
+                </article>
+                <article class="project-card">
+                    <h3>Pokemon Type Calculator</h3>
+                    <p>Check to see what a pokemon is weak to</p>
+                    <a href="ai_webpages/pokemon.html" class="project-link">Read Stories →</a>
+                </article>
+                <article class="project-card">
+                    <h3>AI Code Examples</h3>
+                    <p>See examples of programming code automatically created by AI to solve various problems. From simple algorithms to complex applications.</p>
+                    <a href="ai_webpages/code-generation.html" class="project-link">View Code →</a>
+                </article>
             </div>
+        </section>
+        
+        <section class="newsletter">
+            <h2>Stay Updated with AI Innovations</h2>
+            <p>Subscribe to our newsletter to receive the latest updates on our AI projects and innovations.</p>
+            <form action="/subscribe" method="post" class="newsletter-form">
+                <input type="email" name="email" placeholder="Your email address" required aria-label="Email address">
+                <button type="submit" class="subscribe-button">Subscribe</button>
+            </form>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 AI Creations. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>AI Creations</h3>
+                <p>Exploring the creative potential of artificial intelligence through interactive demos and examples.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="ai_webpages/ai_creations.html">AI Projects</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="https://twitter.com/aicreations" aria-label="Twitter">Twitter</a>
+                    <a href="https://github.com/aicreations" aria-label="GitHub">GitHub</a>
+                    <a href="https://linkedin.com/company/aicreations" aria-label="LinkedIn">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 AI Creations. All rights reserved.</p>
+            <p><a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a></p>
+        </div>
     </footer>
 
-    <script src="ai_webpages/js/script.js"></script>
-    <script src="ai_webpages/js/theme.js"></script>
+    <!-- Deferred JavaScript loading -->
+    <script src="ai_webpages/js/script.js" defer></script>
+    <script src="ai_webpages/js/theme.js" defer></script>
+    <script src="ai_webpages/js/seo-schema.js" defer></script>
 </body>
 </html>

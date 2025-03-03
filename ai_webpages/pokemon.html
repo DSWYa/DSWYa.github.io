@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Type Weakness Checker</title>
+    <link rel="stylesheet" href="css/pokemon.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Pokémon Type Weakness Checker</h1>
+            <p>Select one or two Pokémon types to see their weaknesses</p>
+        </header>
+        
+        <div class="type-selector">
+            <h2>Select Pokémon Type(s)</h2>
+            <div class="type-grid" id="typeSelection">
+                <!-- Types will be inserted by JavaScript -->
+            </div>
+        </div>
+        
+        <div class="results-container">
+            <h2>Weakness Analysis</h2>
+            <div class="selected-types" id="selectedTypes">
+                <p>No types selected</p>
+            </div>
+            
+            <div class="weakness-results">
+                <div class="weakness-category">
+                    <h3>Very Weak To (4×)</h3>
+                    <div class="type-list" id="veryWeak"></div>
+                </div>
+                <div class="weakness-category">
+                    <h3>Weak To (2×)</h3>
+                    <div class="type-list" id="weak"></div>
+                </div>
+                <div class="weakness-category">
+                    <h3>Resistant To (½×)</h3>
+                    <div class="type-list" id="resistant"></div>
+                </div>
+                <div class="weakness-category">
+                    <h3>Very Resistant To (¼×)</h3>
+                    <div class="type-list" id="veryResistant"></div>
+                </div>
+                <div class="weakness-category">
+                    <h3>Immune To (0×)</h3>
+                    <div class="type-list" id="immune"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="reset-container">
+            <button id="resetButton">Reset Selection</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Pokémon Type Checker - A tool for trainers</p>
+    </footer>
+
+    <script src="js/pokemon.js"></script>
+</body>
+</html>
