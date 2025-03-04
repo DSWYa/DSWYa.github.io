@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Generation Starter Pokemon Move Selector</title>
+    <link rel="stylesheet" href="css/pokemoves.css">
+</head>
+<body>
+    <div class="header" style="position: relative; display: flex; align-items: center; justify-content: center; padding: 20px;">
+        <button onclick="goBack()" style="position: absolute; left: 20px; padding: 10px 15px; font-size: 16px; background-color: var(--accent-color); border: none; cursor: pointer; font-weight: bold; border-radius: 5px;">Back</button>
+        <h1>Best Starter Moves</h1>
+    </div> 
+    <div class="container">
+        <h1>Starter Pokemon Move Selector</h1>
+        
+        <div class="generation-tabs">
+            <button data-gen="1">Gen 1</button>
+            <button data-gen="2">Gen 2</button>
+            <button data-gen="3">Gen 3</button>
+            <button data-gen="4">Gen 4</button>
+            <button data-gen="5">Gen 5</button>
+            <button data-gen="6">Gen 6</button>
+            <button data-gen="7">Gen 7</button>
+            <button data-gen="8">Gen 8</button>
+        </div>
+
+        <div class="starter-selection">
+            <h2>Choose Your Starter</h2>
+            <div class="starter-buttons" id="starterButtons">
+                <!-- Starter buttons will be dynamically populated -->
+            </div>
+        </div>
+
+        <div id="moves-display" class="moves-container">
+            <h2 id="pokemon-name">Select a Pokemon</h2>
+            <div class="evolution-moves">
+                <div class="base-stage">
+                    <h3>Base Stage Moves</h3>
+                    <ul id="base-moves"></ul>
+                </div>
+                <div class="first-evolution">
+                    <h3>First Evolution Moves</h3>
+                    <ul id="first-evolution-moves"></ul>
+                </div>
+                <div class="final-evolution">
+                    <h3>Final Evolution Moves</h3>
+                    <ul id="final-evolution-moves"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/pokemoves.js"></script>
+    <script src="js/backbutton.js"></script>
+</body>
+</html>
