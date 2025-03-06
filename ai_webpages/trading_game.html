@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartoon Stock Trader</title>
+    <link rel="stylesheet" href="css/trading_game.css">
+</head>
+<body>
+    <div class="container">
+        <header class="card">
+            <button onclick="goBack()" style="position: absolute; left: 20px; padding: 10px 15px; font-size: 16px; background-color: var(--accent-color); border: none; cursor: pointer; font-weight: bold; border-radius: 5px;">Back</button>
+            <h1>📈 Cartoon Stock Trader 📉</h1>
+            <div class="time" id="game-time">Day 1 - 9:00 AM</div>
+            <div class="ai-trader">
+                <img src="/api/placeholder/50/50" alt="AI Trader">
+                <div>
+                    <strong>Stonks McAI</strong>
+                    <div class="ai-thought" id="ai-thought">I think tech stocks will rise today!</div>
+                </div>
+            </div>
+            <div class="balance" id="balance">Your Balance: $10,000</div>
+        </header>
+        
+        <div class="card">
+            <h2>Stock Market</h2>
+            <div class="chart-container" id="chart-container">
+                <!-- Chart will be drawn here -->
+            </div>
+            <div class="actions">
+                <button class="btn-buy" id="btn-buy">Buy Stock</button>
+                <button class="btn-sell" id="btn-sell">Sell Stock</button>
+                <button class="btn-short" id="btn-short">Short Sell</button>
+                <button class="btn-limit" id="btn-limit">Limit Order</button>
+                <button class="btn-adv" id="btn-advance">Advance Time (1h)</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3>Available Stocks</h3>
+            <div class="stock-list">
+                <table id="stock-table">
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Change</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stock-list"></tbody>
+                </table>
+            </div>
+            <div id="stock-detail"></div>
+        </div>
+        
+        <div class="card dashboard">
+            <div>
+                <h3>Your Portfolio</h3>
+                <div class="portfolio">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Stock</th>
+                                <th>Shares</th>
+                                <th>Avg. Price</th>
+                                <th>Current Value</th>
+                                <th>P/L</th>
+                            </tr>
+                        </thead>
+                        <tbody id="portfolio"></tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div>
+                <h3>Trade History</h3>
+                <div class="trade-history">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Action</th>
+                                <th>Stock</th>
+                                <th>Shares</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody id="trade-history"></tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div id="margin-info"></div>
+        </div>
+    </div>
+    
+    <!-- Trade Modal -->
+    <div class="trade-modal" id="trade-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Buy Stock</h3>
+                <button class="close-modal" id="close-modal">&times;</button>
+            </div>
+            <div class="trade-form" id="trade-form">
+                <div class="form-group">
+                    <label for="stock-select">Select Stock:</label>
+                    <select id="stock-select"></select>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" min="1" value="1">
+                </div>
+                <div class="form-group" id="price-group" style="display:none;">
+                    <label for="limit-price">Limit Price:</label>
+                    <input type="number" id="limit-price" step="0.01">
+                </div>
+                <div class="form-group" id="margin-group" style="display:none;">
+                    <label for="use-margin">Use Margin:</label>
+                    <select id="use-margin">
+                        <option value="no">No</option>
+                        <option value="yes">Yes (2x Leverage)</option>
+                    </select>
+                </div>
+                <div id="cost-estimate" class="form-group">
+                    Estimated Cost: $0
+                </div>
+                <button type="button" id="confirm-trade" class="btn-buy">Confirm Trade</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Game Over Screen -->
+    <div class="game-over" id="game-over">
+        <div class="game-over-content">
+            <h2 id="game-over-title">Game Over!</h2>
+            <p id="game-over-message">You've run out of money!</p>
+            <button class="btn-restart" id="btn-restart">Play Again</button>
+        </div>
+    </div>
+    
+    <script src="js/trading_game.js"></script>
+    <script src="js/backbutton.js"></script>
+</body>
+</html>
